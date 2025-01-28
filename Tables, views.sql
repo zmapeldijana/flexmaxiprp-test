@@ -1,0 +1,983 @@
+--
+-- Create Schema Script
+--   Database Version            : 19.0.0.0.0
+--   Database Compatible Level   : 19.0.0.0.0
+--   Script Compatible Level     : 19.0.0.0.0
+--   Toad Version                : 16.3.231.2085
+--   DB Connect String           : MAXIPRP
+--   Schema                      : AP_DIJANA
+--   Script Created by           : AP_DIJANA
+--   Script Created at           : 28/01/2025 11:37:53 AM
+--   Notes                       : 
+--
+
+-- Object Counts: 
+--   Tables: 36         Columns: 325        
+
+
+-- "Set define off" turns off substitution variables.
+Set define off; 
+
+--
+-- DATABASECHANGELOG  (Table) 
+--
+--   Row Count: 1
+CREATE TABLE AP_DIJANA.DATABASECHANGELOG
+(
+  ID             VARCHAR2(255 BYTE),
+  AUTHOR         VARCHAR2(255 BYTE),
+  FILENAME       VARCHAR2(255 BYTE),
+  DATEEXECUTED   TIMESTAMP(6),
+  ORDEREXECUTED  INTEGER,
+  EXECTYPE       VARCHAR2(10 BYTE),
+  MD5SUM         VARCHAR2(35 BYTE),
+  DESCRIPTION    VARCHAR2(255 BYTE),
+  COMMENTS       VARCHAR2(255 BYTE),
+  TAG            VARCHAR2(255 BYTE),
+  LIQUIBASE      VARCHAR2(20 BYTE),
+  CONTEXTS       VARCHAR2(255 BYTE),
+  LABELS         VARCHAR2(255 BYTE),
+  DEPLOYMENT_ID  VARCHAR2(10 BYTE)
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- DATABASECHANGELOGLOCK  (Table) 
+--
+--   Row Count: 1
+CREATE TABLE AP_DIJANA.DATABASECHANGELOGLOCK
+(
+  ID           INTEGER,
+  LOCKED       NUMBER(1),
+  LOCKGRANTED  TIMESTAMP(6),
+  LOCKEDBY     VARCHAR2(255 BYTE)
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_APP_LANGUAGE  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_APP_LANGUAGE
+(
+  APP_LANGUAGE_ID  NUMBER,
+  LANGUAGE_NAME    NVARCHAR2(50),
+  LANGUAGE_CODE    NVARCHAR2(2),
+  IS_ACTIVE        CHAR(1 BYTE),
+  CREATION_DATE    DATE,
+  WHO_CHANGED      NVARCHAR2(50),
+  WHEN_CHANGED     DATE
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_ATTENDANCE_RECORD  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_ATTENDANCE_RECORD
+(
+  NAME                  VARCHAR2(50 BYTE),
+  LAST_NAME             VARCHAR2(50 BYTE),
+  ARRIVAL_TIME          DATE,
+  TYPE_OF_JOB           VARCHAR2(50 BYTE),
+  SF_TYPE_OF_PRESENCE   VARCHAR2(4 BYTE),
+  USER_ID               NUMBER,
+  TIME_OF_DEPARTURE     DATE,
+  SF_POS                VARCHAR2(3 BYTE),
+  RJ                    VARCHAR2(3 BYTE),
+  WHO_ADDED             NVARCHAR2(50),
+  WHEN_ADDED            DATE,
+  WHO_CHANGED           NVARCHAR2(50),
+  WHEN_CHANGED          DATE,
+  ATTENDANCE_RECORD_ID  NUMBER
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_ATTENDANCE_RECORD_T  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_ATTENDANCE_RECORD_T
+(
+  APP_LANGUAGE_ID       NUMBER,
+  NAME                  VARCHAR2(50 BYTE),
+  LAST_NAME             VARCHAR2(50 BYTE),
+  TYPE_OF_JOB           VARCHAR2(50 BYTE),
+  SF_TYPE_OF_PRESENCE   VARCHAR2(4 BYTE),
+  TIME_OF_DEPARTURE     DATE,
+  WHO_ADDED             NVARCHAR2(50),
+  WHEN_ADDED            DATE,
+  WHO_CHANGED           NVARCHAR2(50),
+  WHEN_CHANGED          DATE,
+  ATTENDANCE_RECORD_ID  NUMBER
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_ATTENDANCE_RECORD_TYPE  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_ATTENDANCE_RECORD_TYPE
+(
+  SF_RECORD_TYPE  VARCHAR2(4 BYTE),
+  DESCRIPTION     VARCHAR2(30 BYTE)
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_CERTIFICATE_FROM_THE_SCHOOL  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_CERTIFICATE_FROM_THE_SCHOOL
+(
+  CERTIFICATE_ID    VARCHAR2(10 BYTE),
+  USER_ID           NUMBER,
+  CERTIFICATE_DATE  DATE,
+  IS_ACTIVE         CHAR(1 BYTE)
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_CERTIFICATE_FROM_THE_SCHOOL_T  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_CERTIFICATE_FROM_THE_SCHOOL_T
+(
+  CERTIFICATE_ID   VARCHAR2(10 BYTE),
+  USER_ID          NUMBER,
+  APP_LANGUAGE_ID  NUMBER,
+  IS_ACTIVE        CHAR(1 BYTE)
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_CMS_ROLE  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_CMS_ROLE
+(
+  CMS_ROLE_ID           NUMBER,
+  CMS_ROLE_NAME         NVARCHAR2(50),
+  CMS_ROLE_DESCRIPTION  NVARCHAR2(100),
+  IS_ONLY_FOR_INTERNAL  CHAR(1 BYTE),
+  IS_ACTIVE             CHAR(1 BYTE),
+  CREATION_DATE         DATE,
+  WHO_CHANGED           NVARCHAR2(50),
+  WHEN_CHANGED          DATE
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_CMS_ROLE_WEB_API_ENDPOINT  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_CMS_ROLE_WEB_API_ENDPOINT
+(
+  CMS_ROLE_WEB_API_ENDPOINT_ID  NUMBER,
+  CMS_ROLE_ID                   NUMBER,
+  WEB_API_ENDPOINT_ID           NUMBER,
+  IS_ACTIVE                     CHAR(1 BYTE),
+  CREATION_DATE                 DATE,
+  WHO_CHANGED                   NVARCHAR2(50),
+  WHEN_CHANGED                  DATE
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_CMS_SUPPLIER  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_CMS_SUPPLIER
+(
+  CMS_SUPPLIER_ID  INTEGER,
+  NAME             NVARCHAR2(50),
+  SF_KOM           NUMBER(10),
+  ADDRESS          NVARCHAR2(100),
+  EMAIL            NVARCHAR2(50),
+  PHONE            NVARCHAR2(50),
+  CREATION_DATE    DATE,
+  WHO_CHANGED      NVARCHAR2(50),
+  WHEN_CHANGED     DATE,
+  IS_ACTIVE        CHAR(1 BYTE)
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_CONTRACT_FLEX_USER  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_CONTRACT_FLEX_USER
+(
+  SF_CONTRACT         VARCHAR2(3 BYTE),
+  VALID_FROM          DATE,
+  VALID_TO            DATE,
+  USER_ID             NUMBER,
+  USER_CMS_ID         NUMBER,
+  DATE_OF_SIGNING     DATE,
+  WHO_CHANGED         NVARCHAR2(50),
+  WHEN_CHANGED        DATE,
+  SF_CONTRACT_PARENT  VARCHAR2(3 BYTE)
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_CONTRACT_FLEX_USER_T  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_CONTRACT_FLEX_USER_T
+(
+  SF_CONTRACT         VARCHAR2(3 BYTE),
+  APP_LANGUAGE_ID     NUMBER,
+  USER_ID             NUMBER,
+  USER_CMS_ID         NUMBER,
+  WHO_CHANGED         NVARCHAR2(50),
+  WHEN_CHANGED        DATE,
+  SF_CONTRACT_PARENT  VARCHAR2(3 BYTE)
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_CONTRACT_TYPE  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_CONTRACT_TYPE
+(
+  SF_CONTRACT          VARCHAR2(3 BYTE),
+  DESCRIPTION          VARCHAR2(30 BYTE),
+  MAX_NUMBER_OF_HOURS  NUMBER,
+  IS_ACTIVE            CHAR(1 BYTE),
+  SF_CONTRACT_PARENT   VARCHAR2(3 BYTE),
+  WHO_ADDED            NVARCHAR2(50),
+  WHEN_ADDED           DATE,
+  WHO_CHANGED          NVARCHAR2(50),
+  WHEN_CHANGED         DATE
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_CONTRACT_TYPE_T  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_CONTRACT_TYPE_T
+(
+  SF_CONTRACT         VARCHAR2(3 BYTE),
+  APP_LANGUAGE_ID     NUMBER,
+  DESCRIPTION         VARCHAR2(30 BYTE),
+  IS_ACTIVE           CHAR(1 BYTE),
+  SF_CONTRACT_PARENT  VARCHAR2(3 BYTE),
+  WHO_ADDED           NVARCHAR2(50),
+  WHEN_ADDED          DATE,
+  WHO_CHANGED         NVARCHAR2(50),
+  WHEN_CHANGED        DATE
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_EVALUATION  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_EVALUATION
+(
+  USER_ID           NUMBER,
+  SF_POS            VARCHAR2(3 BYTE),
+  RJ                VARCHAR2(3 BYTE),
+  FLEX_EVALUATION   NUMBER,
+  FLEX_COMMENT      VARCHAR2(50 BYTE),
+  STORE_EVALUATION  NUMBER,
+  STORE_COMMENT     VARCHAR2(50 BYTE),
+  WHO_ADDED         NVARCHAR2(50),
+  WHEN_ADDED        DATE,
+  WHO_CHANGED       NVARCHAR2(50),
+  WHEN_CHANGED      DATE,
+  EVALUATION_ID     NUMBER
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_EVALUATION_T  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_EVALUATION_T
+(
+  APP_LANGUAGE_ID  NUMBER,
+  FLEX_COMMENT     VARCHAR2(50 BYTE),
+  STORE_COMMENT    VARCHAR2(50 BYTE),
+  WHO_ADDED        NVARCHAR2(50),
+  WHEN_ADDED       DATE,
+  WHO_CHANGED      NVARCHAR2(50),
+  WHEN_CHANGED     DATE,
+  EVALUATION_ID    NUMBER,
+  USER_ID          NUMBER,
+  SF_POS           VARCHAR2(3 BYTE),
+  RJ               VARCHAR2(3 BYTE)
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_MPO_FUND_HOURS  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_MPO_FUND_HOURS
+(
+  MPO_FUND_HOURS_ID  VARCHAR2(10 BYTE),
+  DATE_FROM          DATE,
+  DATE_TO            DATE,
+  FUND_HOURS         NUMBER,
+  SF_POS             VARCHAR2(3 BYTE),
+  RJ                 VARCHAR2(3 BYTE)
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_OFFER  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_OFFER
+(
+  OFFER_ID             VARCHAR2(10 BYTE),
+  TIME_FROM            DATE,
+  TIME_TO              DATE,
+  NUMBER_OF_EXECUTORS  NUMBER,
+  SF_POS               VARCHAR2(3 BYTE),
+  RJ                   VARCHAR2(3 BYTE),
+  HOT_OFFER            CHAR(1 BYTE),
+  STATUS               VARCHAR2(20 BYTE),
+  WHO_ADDED            NVARCHAR2(50),
+  WHEN_ADDED           DATE,
+  WHO_CHANGED          NVARCHAR2(50),
+  WHEN_CHANGED         DATE
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+COMMENT ON COLUMN AP_DIJANA.FLEX_OFFER.STATUS IS 'Otvorena, rezervisana';
+
+
+--
+-- FLEX_OFFER_T  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_OFFER_T
+(
+  OFFER_ID         VARCHAR2(10 BYTE),
+  APP_LANGUAGE_ID  NUMBER,
+  HOT_OFFER        CHAR(1 BYTE),
+  STATUS           VARCHAR2(20 BYTE),
+  WHO_ADDED        NVARCHAR2(50),
+  WHEN_ADDED       DATE,
+  WHO_CHANGED      NVARCHAR2(50),
+  WHEN_CHANGED     DATE
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+COMMENT ON COLUMN AP_DIJANA.FLEX_OFFER_T.STATUS IS 'Open, reserved';
+
+
+--
+-- FLEX_OFFER_USER  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_OFFER_USER
+(
+  OFFER_ID          VARCHAR2(10 BYTE),
+  USER_ID           NUMBER,
+  SELECTION_STATUS  VARCHAR2(10 BYTE),
+  DATE_OF_ELECTION  DATE
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_OFFER_USER_T  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_OFFER_USER_T
+(
+  OFFER_ID          VARCHAR2(10 BYTE),
+  APP_LANGUAGE_ID   NUMBER,
+  USER_ID           NUMBER,
+  SELECTION_STATUS  VARCHAR2(10 BYTE)
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_SANITARY_BOOKLET  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_SANITARY_BOOKLET
+(
+  SANITARY_ID  VARCHAR2(15 BYTE),
+  VALID_FROM   DATE,
+  VALID_TO     DATE,
+  USER_ID      NUMBER
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_STATUS  (Table) 
+--
+--   Row Count: 1
+CREATE TABLE AP_DIJANA.FLEX_STATUS
+(
+  SF_STATUS           VARCHAR2(3 BYTE),
+  STATUS_DESCRIPTION  VARCHAR2(15 BYTE),
+  TEST_KOLONA         VARCHAR2(6 BYTE)
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_STATUS_T  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_STATUS_T
+(
+  SF_STATUS           VARCHAR2(3 BYTE),
+  APP_LANGUAGE_ID     NUMBER,
+  STATUS_DESCRIPTION  VARCHAR2(15 BYTE)
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_STORE  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_STORE
+(
+  SF_POS  VARCHAR2(3 BYTE),
+  RJ      VARCHAR2(3 BYTE)
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_TRAINING  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_TRAINING
+(
+  TRAINING_ID             VARCHAR2(15 BYTE),
+  TRAINING_NAME           VARCHAR2(15 BYTE),
+  DESCRIPTION             VARCHAR2(50 BYTE),
+  DURATION_LENGTH_IN_MIN  NUMBER,
+  VIDEO_URL               VARCHAR2(100 BYTE),
+  DATE_OF_CREATION        DATE,
+  MANDATORY_TRAINING      CHAR(1 BYTE),
+  RUNS_FROM               DATE,
+  RUNS_TO                 DATE,
+  IS_ACTIVE               CHAR(1 BYTE),
+  WHO_ADDED               NVARCHAR2(50),
+  WHEN_ADDED              DATE,
+  WHO_CHANGED             NVARCHAR2(50),
+  WHEN_CHANGED            DATE
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+COMMENT ON COLUMN AP_DIJANA.FLEX_TRAINING.DURATION_LENGTH_IN_MIN IS 'minuti';
+
+
+--
+-- FLEX_TRAINING_T  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_TRAINING_T
+(
+  TRAINING_ID      VARCHAR2(15 BYTE),
+  APP_LANGUAGE_ID  NUMBER,
+  TRAINING_NAME    VARCHAR2(15 BYTE),
+  DESCRIPTION      VARCHAR2(50 BYTE),
+  DURATION_IN_MIN  NUMBER,
+  VIDEO_URL        VARCHAR2(100 BYTE),
+  IS_ACTIVE        CHAR(1 BYTE),
+  WHO_ADDED        NVARCHAR2(50),
+  WHEN_ADDED       DATE,
+  WHO_CHANGED      NVARCHAR2(50),
+  WHEN_CHANGED     DATE
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+COMMENT ON COLUMN AP_DIJANA.FLEX_TRAINING_T.DURATION_IN_MIN IS 'minuts';
+
+
+--
+-- FLEX_TRAINING_USER  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_TRAINING_USER
+(
+  TRAINING_ID  VARCHAR2(15 BYTE),
+  USER_ID      NUMBER
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_TYPE_CONTRACT_PARENT  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_TYPE_CONTRACT_PARENT
+(
+  SF_CONTRACT_PARENT  VARCHAR2(3 BYTE),
+  CONTRACT_TYPE       VARCHAR2(15 BYTE)
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_TYPE_CONTRACT_PARENT_T  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_TYPE_CONTRACT_PARENT_T
+(
+  SF_CONTRACT_PARENT  VARCHAR2(3 BYTE),
+  APP_LANGUAGE_ID     NUMBER,
+  CONTRACT_TYPE       VARCHAR2(15 BYTE)
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_USER  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_USER
+(
+  USER_ID                   NUMBER,
+  EMAIL                     VARCHAR2(50 BYTE),
+  PASSWORD                  VARCHAR2(200 BYTE),
+  NAME                      VARCHAR2(50 BYTE),
+  LAST_NAME                 VARCHAR2(50 BYTE),
+  DATE_OF_BIRTH             DATE,
+  DATE_OF_BIRTH_CODE        VARCHAR2(8 BYTE),
+  GENDER                    CHAR(1 BYTE),
+  CITY_REAL                 VARCHAR2(50 BYTE),
+  CITY_LK                   VARCHAR2(50 BYTE),
+  ADDRESS_REAL              VARCHAR2(100 BYTE),
+  ADDRESS_LK                VARCHAR2(100 BYTE),
+  PHONE_NUMBER              VARCHAR2(50 BYTE),
+  EMPLOYMENT_STATUS         VARCHAR2(50 BYTE),
+  YC                        VARCHAR2(50 BYTE),
+  COMPANY                   VARCHAR2(50 BYTE),
+  TS_SIZE                   CHAR(1 BYTE),
+  JMBG                      NUMBER,
+  IS_ACCEPT_PRIVACY_POLICY  CHAR(1 BYTE),
+  IS_ACCEPT_EMAIL_NOTIF     CHAR(1 BYTE),
+  IS_ACCEPT_PUSH_NOTIF      CHAR(1 BYTE),
+  IS_EMAIL_VERIFIED         CHAR(1 BYTE),
+  PERSONAL_BARCODE          VARCHAR2(13 BYTE),
+  IS_ACTIVE                 CHAR(1 BYTE),
+  VIDEO_TRAINING            CHAR(1 BYTE),
+  BZR_TRAINING              CHAR(1 BYTE),
+  EMPLOYMENT                VARCHAR2(50 BYTE),
+  SF_STATUS                 VARCHAR2(50 BYTE),
+  WHO_CHANGED               NVARCHAR2(50),
+  WHEN_CHANGED              DATE
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+COMMENT ON COLUMN AP_DIJANA.FLEX_USER.VIDEO_TRAINING IS 'D-odlgledao, N-nije';
+
+COMMENT ON COLUMN AP_DIJANA.FLEX_USER.BZR_TRAINING IS 'D-odradio, N-nije';
+
+
+--
+-- FLEX_USER_CMS  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_USER_CMS
+(
+  USER_CMS_ID                     NUMBER,
+  USER_NAME                       NVARCHAR2(50),
+  PASSWORD                        NVARCHAR2(200),
+  CMS_ROLE_ID                     NUMBER,
+  NAME                            NVARCHAR2(50),
+  SURNAME                         NVARCHAR2(50),
+  EMAIL                           NVARCHAR2(50),
+  CMS_SUPPLIER_ID                 NUMBER,
+  ACTIVATION_CODE                 NVARCHAR2(100),
+  IS_EMAIL_VERIFIED               CHAR(1 BYTE),
+  IS_ACTIVE                       CHAR(1 BYTE),
+  INVALID_LOGIN_ATTEMPT_COUNT     INTEGER,
+  WHEN_LAST_INVALID_LOGIN_ATTEMP  DATE,
+  IS_LOCKED                       CHAR(1 BYTE),
+  WHEN_LOCKED                     DATE,
+  IS_PARTICIPATE_IN_TEST          CHAR(1 BYTE),
+  BLOCKED_FROM                    DATE,
+  BLOCKED_TO                      DATE,
+  IS_APPROVED                     CHAR(1 BYTE),
+  WHEN_APPROVED                   DATE,
+  WHO_APPROVED                    NVARCHAR2(50),
+  EXECUTE_COMMAND                 NVARCHAR2(200),
+  CREATION_DATE                   DATE,
+  WHO_CHANGED                     NVARCHAR2(50),
+  WHEN_CHANGED                    DATE,
+  IS_INTERNAL                     CHAR(1 BYTE)
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_USER_CMS_T  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_USER_CMS_T
+(
+  USER_CMS_ID                  NUMBER,
+  APP_LANGUAGE_ID              NUMBER,
+  IS_EMAIL_VERIFIED            CHAR(1 BYTE),
+  IS_ACTIVE                    CHAR(1 BYTE),
+  INVALID_LOGIN_ATTEMPT_COUNT  INTEGER,
+  IS_LOCKED                    CHAR(1 BYTE),
+  IS_PARTICIPATE_IN_TEST       CHAR(1 BYTE),
+  IS_APPROVED                  CHAR(1 BYTE),
+  WHO_APPROVED                 NVARCHAR2(50),
+  EXECUTE_COMMAND              NVARCHAR2(200),
+  WHO_CHANGED                  NVARCHAR2(50),
+  IS_INTERNAL                  CHAR(1 BYTE)
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+
+--
+-- FLEX_USER_T  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_USER_T
+(
+  NAME                      VARCHAR2(50 BYTE),
+  LAST_NAME                 VARCHAR2(50 BYTE),
+  CITY_REAL                 VARCHAR2(50 BYTE),
+  CITY_LK                   VARCHAR2(50 BYTE),
+  ADDRESS_REAL              VARCHAR2(100 BYTE),
+  ADDRESS_LK                VARCHAR2(100 BYTE),
+  EMPLOYMENT_STATUS         VARCHAR2(50 BYTE),
+  OZ                        VARCHAR2(50 BYTE),
+  COMPANY                   VARCHAR2(50 BYTE),
+  IS_ACCEPT_PRIVACY_POLICY  CHAR(1 BYTE),
+  IS_ACCEPT_EMAIL_NOTIF     CHAR(1 BYTE),
+  IS_ACCEPT_PUSH_NOTIF      CHAR(1 BYTE),
+  IS_EMAIL_VERIFIED         CHAR(1 BYTE),
+  IS_ACTIVE                 CHAR(1 BYTE),
+  VIDEO_TRAINING            CHAR(1 BYTE),
+  BZR_TRAINING              CHAR(1 BYTE),
+  EMPLOYMENT                VARCHAR2(50 BYTE),
+  SF_STATUS                 VARCHAR2(50 BYTE),
+  WHO_CHANGED               NVARCHAR2(50),
+  WHEN_CHANGED              DATE,
+  USER_ID                   NUMBER,
+  APP_LANGUAGE_ID           NUMBER
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+COMMENT ON COLUMN AP_DIJANA.FLEX_USER_T.VIDEO_TRAINING IS 'Y-looked away, N-not';
+
+COMMENT ON COLUMN AP_DIJANA.FLEX_USER_T.BZR_TRAINING IS 'Y-looked away, N-not';
+
+
+--
+-- FLEX_WEB_API_ENDPOINT  (Table) 
+--
+--   Row Count: 0
+CREATE TABLE AP_DIJANA.FLEX_WEB_API_ENDPOINT
+(
+  WEB_API_ENDPOINT_ID        NUMBER,
+  ENDPOINT_NAME              NVARCHAR2(50),
+  ENDPOINT_DESCRIPTION       NVARCHAR2(100),
+  HOST                       NVARCHAR2(50),
+  PORT                       NVARCHAR2(10),
+  PATH                       NVARCHAR2(500),
+  HTTP_METHOD                NVARCHAR2(10),
+  CONTROLLER_NAME            NVARCHAR2(500),
+  ACTION_NAME                NVARCHAR2(500),
+  IS_ONLY_FOR_AUTHENTICATED  CHAR(1 BYTE),
+  IS_ONLY_FOR_INTERNAL       CHAR(1 BYTE),
+  IS_ACTIVE                  CHAR(1 BYTE),
+  CREATION_DATE              DATE,
+  WHO_CHANGED                NVARCHAR2(50),
+  WHEN_CHANGED               DATE
+)
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );

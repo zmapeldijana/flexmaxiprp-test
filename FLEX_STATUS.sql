@@ -1,0 +1,18 @@
+SET DEFINE OFF;
+Insert into AP_DIJANA.FLEX_STATUS
+   (SF_STATUS, STATUS_DESCRIPTION)
+ Values
+   ('1', 'test status');
+Insert into AP_DIJANA.FLEX_STATUS
+   (SF_STATUS, STATUS_DESCRIPTION, TEST_KOLONA)
+ Values
+   ('2', 'a', 'ab');
+Insert into AP_DIJANA.FLEX_STATUS
+   (SF_STATUS, STATUS_DESCRIPTION, TEST_KOLONA)
+ Values
+   ('3', 'b', 'ba');
+Insert into AP_DIJANA.FLEX_STATUS
+   (SF_STATUS, STATUS_DESCRIPTION, TEST_KOLONA)
+ Values
+   ('4', 'c', 'cc');
+COMMIT;
