@@ -1,8 +1,8 @@
-CREATE OR REPLACE PROCEDURE AP_DIJANA.generisi_JSON_dokUMENT(
-    SF_POS_dok VARCHAR2,
-    RJ_dok VARCHAR2,
-    SF_TIP_dok2 VARCHAR2,
-    dokUMENT_dok VARCHAR2
+CREATE OR REPLACE PROCEDURE AP_DIJANA.generisi_JSON_DOCUMENT(
+    SF_POS_doc VARCHAR2,
+    RJ_doc VARCHAR2,
+    SF_TIP_doc2 VARCHAR2,
+    docUMENT_doc VARCHAR2
 ) AS
     file_handle UTL_FILE.FILE_TYPE;
     file_name VARCHAR2(100);
@@ -11,38 +11,38 @@ BEGIN
     -- Generate JSON data
     SELECT 
         json_serialize(
-            json_object (dok.SF_POS, dok.RJ ,dok.SF_TIP_dok, dok.dokUMENT,dok.SF_PODTIP_dok,dok.IME_OP,dok.SF_RAD, dok.DAT_FORM,
-  dok.DAT_dok,dok.DAT_DPO ,dok.SF_POS_2, dok.RJ_2, dok.SF_KOM, dok.SF_KPOS, dok.IZJAVA, dok.DAT_IZJ, dok.SF_TIP_dok_2, dok.dokUMENT_2,
-  dok.IZNOS_dok_2, dok.MAG_dok, dok.OTPREMNICA, dok.UGOVOR, dok.JCI, dok.MARZA_P, dok.RABAT_P, dok.RABAT, dok.POPUST, dok.SF_DEV,
-  dok.DEV_KURS, dok.NAPOMENA, dok.ZAVRSENO, dok.STORNIRA, dok.SF_TIP_NAL, dok.NALOG, dok.OSN_PVRED, dok.PROD_VRED, dok.DEV_NVRED,
-  dok.ORG_NVRED, dok.MALOPRODAJA, dok.IMA_POREZ, dok.POREZ, dok.PREN_POREZ, dok.POREZ_MARZA,  dok.TROSKOVI, dok.BR_STAVKI,  
-  dok.UVODNI_TEKST, dok.ZAVRSNI_TEKST,  dok.OZNAKA, dok.OTPREMLJENO, dok.SF_VZC, dok.SF_VZL, dok.DAT_SLANJA, dok.REALIZOVANO, 
-  dok.M_TIP_dok, dok.M_NAZIV, dok.M_dokUMENT, dok.M_SF_KOM, dok.OBRADJENO,
-                'dokument_stavke' VALUE (
+            json_object (doc.SF_POS, doc.RJ ,doc.SF_TIP_doc, doc.docUMENT,doc.SF_PODTIP_doc,doc.IME_OP,doc.SF_RAD, doc.DAT_FORM,
+  doc.DAT_dok,doc.DAT_DPO ,doc.SF_POS_2, doc.RJ_2, doc.SF_KOM, doc.SF_KPOS, doc.IZJAVA, doc.DAT_IZJ, doc.SF_TIP_dok_2, doc.DOKUMENT_2,
+  doc.IZNOS_doc_2, doc.MAG_doc, doc.OTPREMNICA, doc.UGOVOR, doc.JCI, doc.MARZA_P, doc.RABAT_P, doc.RABAT, doc.POPUST, doc.SF_DEV,
+  doc.DEV_KURS, doc.NAPOMENA, doc.ZAVRSENO, doc.STORNIRA, doc.SF_TIP_NAL, doc.NALOG, doc.OSN_PVRED, doc.PROD_VRED, doc.DEV_NVRED,
+  doc.ORG_NVRED, doc.MALOPRODAJA, doc.IMA_POREZ, doc.POREZ, doc.PREN_POREZ, doc.POREZ_MARZA,  doc.TROSKOVI, doc.BR_STAVKI,  
+  doc.UVODNI_TEKST, doc.ZAVRSNI_TEKST,  doc.OZNAKA, doc.OTPREMLJENO, doc.SF_VZC, doc.SF_VZL, doc.DAT_SLANJA, doc.REALIZOVANO, 
+  doc.M_TIP_doc, doc.M_NAZIV, doc.M_docUMENT, doc.M_SF_KOM, doc.OBRADJENO,
+                'document_stavke' VALUE (
                     SELECT 
                         JSON_ARRAYAGG(
-                            json_object (ds.SF_POS, ds.RJ, ds.SF_TIP_dok, ds.dokUMENT, ds.STAVKA, ds.RBR, ds.SF_ART, ds.KOLICINA, 
+                            json_object (ds.SF_POS, ds.RJ, ds.SF_TIP_doc, ds.docUMENT, ds.STAVKA, ds.RBR, ds.SF_ART, ds.KOLICINA, 
                                          ds.REALIZOVANO, ds.NAB_VRED, ds.OSN_PCENA, ds.PROD_CENA, ds.DEV_NVRED, ds.ORG_NVRED, 
                                          ds.DEV_PCENA, ds.DAT_ROK, ds.RABAT, ds.MARZA, ds.POREZ, ds.PREN_POREZ, ds.POREZ_MARZA, 
                                          ds.FAKT_VRED, ds.TROSAK, ds.OSN_NCENA, ds.NAB_RABAT_P, ds.SF_ART_PRO, ds.PROD_VRED, 
-                                         ds.M_dokUMENT, ds.ODOBRENO, ds.INT_NVRED, ds.KOMADA, ds.SF_KOM_DOB, ds.LOT, ds.ZA_PROMET, 
+                                         ds.M_docUMENT, ds.ODOBRENO, ds.INT_NVRED, ds.KOMADA, ds.SF_KOM_DOB, ds.LOT, ds.ZA_PROMET, 
                                          ds.SF_POPUST, ds.SF_RNR
                             returning clob)
                         returning clob) 
-                    FROM ap_dijana.dokument_stavke ds
-                    WHERE ds.SF_POS = dok.SF_POS AND ds.RJ = dok.RJ AND ds.SF_TIP_dok = dok.SF_TIP_dok AND ds.dokUMENT = dok.dokUMENT
+                    FROM ap_dijana.document_stavke ds
+                    WHERE ds.SF_POS = doc.SF_POS AND ds.RJ = doc.RJ AND ds.SF_TIP_doc = doc.SF_TIP_doc AND ds.docUMENT = doc.docUMENT
                 ) returning clob
             ) RETURNING CLOB PRETTY
         ) INTO json_data 
-    FROM ap_dijana.dokument dok
-    WHERE dok.SF_POS = SF_POS_dok AND dok.RJ = RJ_dok AND dok.SF_TIP_dok = SF_TIP_dok2 AND dok.dokUMENT = dokUMENT_dok;
+    FROM ap_dijana.document doc
+    WHERE doc.SF_POS = SF_POS_doc AND doc.RJ = RJ_doc AND doc.SF_TIP_doc = SF_TIP_doc2 AND doc.docUMENT = docUMENT_doc;
 
     -- Generate file name with current date
-    file_name := 'json_' || SF_POS_dok || '_' || RJ_dok || '_' || SF_TIP_dok2 || '_' || dokUMENT_dok || '.json';
+    file_name := 'json_' || SF_POS_doc || '_' || RJ_doc || '_' || SF_TIP_doc2 || '_' || docUMENT_doc || '.json';
 
 
     -- Open the file for writing
-    file_handle := UTL_FILE.FOPEN('dokUMENT_JSON_TEST', file_name, 'W');
+    file_handle := UTL_FILE.FOPEN('docUMENT_JSON_TEST', file_name, 'W');
 
     -- Write the JSON data to the file
     UTL_FILE.PUT_LINE(file_handle, json_data);
