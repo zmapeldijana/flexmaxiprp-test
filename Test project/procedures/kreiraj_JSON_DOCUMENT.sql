@@ -5,7 +5,7 @@ CREATE OR REPLACE procedure AP_DIJANA.kreiraj_JSON_DOCUMENT(
   DOKUMENT_dok VARCHAR2
 ) AS
 begin
-
+--grdfg
 select json_serialize(
             json_object (dok.SF_POS, dok.RJ ,dok.SF_TIP_DOK, dok.DOKUMENT,dok.SF_PODTIP_DOK,dok.IME_OP,dok.SF_RAD, dok.DAT_FORM,
   dok.DAT_DOK,dok.DAT_DPO ,dok.SF_POS_2, dok.RJ_2, dok.SF_KOM, dok.SF_KPOS, dok.IZJAVA, dok.DAT_IZJ, dok.SF_TIP_DOK_2, dok.DOKUMENT_2,
