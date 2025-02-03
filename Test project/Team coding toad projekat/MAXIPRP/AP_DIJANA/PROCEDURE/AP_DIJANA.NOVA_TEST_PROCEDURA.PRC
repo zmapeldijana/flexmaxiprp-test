@@ -2,6 +2,7 @@ CREATE OR REPLACE PROCEDURE AP_DIJANA.nova_test_procedura IS
     v_sf_status flex_status.sf_status%TYPE; 
     v_sf_desc flex_status.STATUS_DESCRIPTION%TYPE; -- Deklaracija promenljive
 BEGIN
+    --test komentar
     -- Dodela vrednosti promenljivoj
     SELECT s.sf_status, s.STATUS_DESCRIPTION 
     INTO v_sf_status, v_sf_desc 
