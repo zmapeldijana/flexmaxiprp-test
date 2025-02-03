@@ -1,35 +1,35 @@
 CREATE OR REPLACE procedure AP_DIJANA.kreiraj_JSON_DOCUMENT(
-  SF_POS_doc VARCHAR2,
-  RJ_doc VARCHAR2,
-  SF_TIP_doc2 VARCHAR2,
-  docUMENT_doc VARCHAR2
+  SF_POS_dok VARCHAR2,
+  RJ_dok VARCHAR2,
+  SF_TIP_dok2 VARCHAR2,
+  DOKUMENT_dok VARCHAR2
 ) AS
 begin
 --obrisan komentar
 select json_serialize(
-            json_object (doc.SF_POS, doc.RJ ,doc.SF_TIP_doc, doc.docUMENT,doc.SF_PODTIP_doc,doc.IME_OP,doc.SF_RAD, doc.DAT_FORM,
-  doc.DAT_doc,doc.DAT_DPO ,doc.SF_POS_2, doc.RJ_2, doc.SF_KOM, doc.SF_KPOS, doc.IZJAVA, doc.DAT_IZJ, doc.SF_TIP_doc_2, doc.docUMENT_2,
-  doc.IZNOS_doc_2, doc.MAG_doc, doc.OTPREMNICA, doc.UGOVOR, doc.JCI, doc.MARZA_P, doc.RABAT_P, doc.RABAT, doc.POPUST, doc.SF_DEV,
-  doc.DEV_KURS, doc.NAPOMENA, doc.ZAVRSENO, doc.STORNIRA, doc.SF_TIP_NAL, doc.NALOG, doc.OSN_PVRED, doc.PROD_VRED, doc.DEV_NVRED,
-  doc.ORG_NVRED, doc.MALOPRODAJA, doc.IMA_POREZ, doc.POREZ, doc.PREN_POREZ, doc.POREZ_MARZA,  doc.TROSKOVI, doc.BR_STAVKI,  
-  doc.UVODNI_TEKST, doc.ZAVRSNI_TEKST,  doc.OZNAKA, doc.OTPREMLJENO, doc.SF_VZC, doc.SF_VZL, doc.DAT_SLANJA, doc.REALIZOVANO, 
-  doc.M_TIP_doc, doc.M_NAZIV, doc.M_docUMENT, doc.M_SF_KOM, doc.OBRADJENO,
-                'document_stavke' value JSON_ARRAYAGG(
+            json_object (dok.SF_POS, dok.RJ ,dok.SF_TIP_DOK, dok.DOKUMENT,dok.SF_PODTIP_DOK,dok.IME_OP,dok.SF_RAD, dok.DAT_FORM,
+  dok.DAT_DOK,dok.DAT_DPO ,dok.SF_POS_2, dok.RJ_2, dok.SF_KOM, dok.SF_KPOS, dok.IZJAVA, dok.DAT_IZJ, dok.SF_TIP_DOK_2, dok.DOKUMENT_2,
+  dok.IZNOS_DOK_2, dok.MAG_DOK, dok.OTPREMNICA, dok.UGOVOR, dok.JCI, dok.MARZA_P, dok.RABAT_P, dok.RABAT, dok.POPUST, dok.SF_DEV,
+  dok.DEV_KURS, dok.NAPOMENA, dok.ZAVRSENO, dok.STORNIRA, dok.SF_TIP_NAL, dok.NALOG, dok.OSN_PVRED, dok.PROD_VRED, dok.DEV_NVRED,
+  dok.ORG_NVRED, dok.MALOPRODAJA, dok.IMA_POREZ, dok.POREZ, dok.PREN_POREZ, dok.POREZ_MARZA,  dok.TROSKOVI, dok.BR_STAVKI,  
+  dok.UVODNI_TEKST, dok.ZAVRSNI_TEKST,  dok.OZNAKA, dok.OTPREMLJENO, dok.SF_VZC, dok.SF_VZL, dok.DAT_SLANJA, dok.REALIZOVANO, 
+  dok.M_TIP_DOK, dok.M_NAZIV, dok.M_DOKUMENT, dok.M_SF_KOM, dok.OBRADJENO,
+                'dokument_stavke' value JSON_ARRAYAGG(
                     json_object (ds.*) returning clob
                 ) 
             returning clob
             )
             returning clob pretty
         ) as dataJSON 
-    FROM  maxi_2024.document doc, maxi_2024.document_stavke ds
-    where  doc.SF_POS=ds.SF_POS and doc.RJ=ds.RJ and doc.SF_TIP_doc=ds.SF_TIP_doc and doc.docUMENT=ds.docUMENT
-    and doc.SF_POS=SF_POS_doc and doc.RJ=RJ_doc and doc.SF_TIP_doc=SF_TIP_doc2 and doc.docUMENT=docUMENT_doc
-group  by doc.SF_POS, doc.RJ ,doc.SF_TIP_doc, doc.docUMENT,doc.SF_PODTIP_doc,doc.IME_OP,doc.SF_RAD, doc.DAT_FORM,
-  doc.DAT_doc,doc.DAT_DPO ,doc.SF_POS_2, doc.RJ_2, doc.SF_KOM, doc.SF_KPOS, doc.IZJAVA, doc.DAT_IZJ, doc.SF_TIP_doc_2, doc.docUMENT_2,
-  doc.IZNOS_doc_2, doc.MAG_doc, doc.OTPREMNICA, doc.UGOVOR, doc.JCI, doc.MARZA_P, doc.RABAT_P, doc.RABAT, doc.POPUST, doc.SF_DEV,
-  doc.DEV_KURS, doc.NAPOMENA, doc.ZAVRSENO, doc.STORNIRA, doc.SF_TIP_NAL, doc.NALOG, doc.OSN_PVRED, doc.PROD_VRED, doc.DEV_NVRED,
-  doc.ORG_NVRED, doc.MALOPRODAJA, doc.IMA_POREZ, doc.POREZ, doc.PREN_POREZ, doc.POREZ_MARZA,  doc.TROSKOVI, doc.BR_STAVKI,  
-  doc.UVODNI_TEKST, doc.ZAVRSNI_TEKST,  doc.OZNAKA, doc.OTPREMLJENO, doc.SF_VZC, doc.SF_VZL, doc.DAT_SLANJA, doc.REALIZOVANO, 
-  doc.M_TIP_doc, doc.M_NAZIV, doc.M_docUMENT, doc.M_SF_KOM, doc.OBRADJENO;
+    FROM  maxi_2024.dokument dok, maxi_2024.dokument_stavke ds
+    where  dok.SF_POS=ds.SF_POS and dok.RJ=ds.RJ and dok.SF_TIP_DOK=ds.SF_TIP_DOK and dok.DOKUMENT=ds.DOKUMENT
+    and dok.SF_POS=SF_POS_dok and dok.RJ=RJ_dok and dok.SF_TIP_DOK=SF_TIP_DOK2 and dok.DOKUMENT=DOKUMENT_dok
+group  by dok.SF_POS, dok.RJ ,dok.SF_TIP_DOK, dok.DOKUMENT,dok.SF_PODTIP_DOK,dok.IME_OP,dok.SF_RAD, dok.DAT_FORM,
+  dok.DAT_DOK,dok.DAT_DPO ,dok.SF_POS_2, dok.RJ_2, dok.SF_KOM, dok.SF_KPOS, dok.IZJAVA, dok.DAT_IZJ, dok.SF_TIP_DOK_2, dok.DOKUMENT_2,
+  dok.IZNOS_DOK_2, dok.MAG_DOK, dok.OTPREMNICA, dok.UGOVOR, dok.JCI, dok.MARZA_P, dok.RABAT_P, dok.RABAT, dok.POPUST, dok.SF_DEV,
+  dok.DEV_KURS, dok.NAPOMENA, dok.ZAVRSENO, dok.STORNIRA, dok.SF_TIP_NAL, dok.NALOG, dok.OSN_PVRED, dok.PROD_VRED, dok.DEV_NVRED,
+  dok.ORG_NVRED, dok.MALOPRODAJA, dok.IMA_POREZ, dok.POREZ, dok.PREN_POREZ, dok.POREZ_MARZA,  dok.TROSKOVI, dok.BR_STAVKI,  
+  dok.UVODNI_TEKST, dok.ZAVRSNI_TEKST,  dok.OZNAKA, dok.OTPREMLJENO, dok.SF_VZC, dok.SF_VZL, dok.DAT_SLANJA, dok.REALIZOVANO, 
+  dok.M_TIP_DOK, dok.M_NAZIV, dok.M_DOKUMENT, dok.M_SF_KOM, dok.OBRADJENO;
 end;
 /
