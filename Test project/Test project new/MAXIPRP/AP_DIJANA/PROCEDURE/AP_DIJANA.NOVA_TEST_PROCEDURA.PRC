@@ -6,6 +6,7 @@ BEGIN
 --sers
 --TEST
 --test2
+
     SELECT s.sf_status, s.STATUS_DESCRIPTION
     INTO v_sf_status, v_sf_desc 
     FROM flex_status s;
