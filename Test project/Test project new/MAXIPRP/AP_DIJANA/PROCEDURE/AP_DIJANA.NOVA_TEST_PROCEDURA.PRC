@@ -4,7 +4,8 @@ CREATE OR REPLACE PROCEDURE AP_DIJANA.nova_test_procedura IS
 BEGIN
     -- Dodela vrednosti promenljivoj
 --sers
---11
+--TEST
+--test2
     SELECT s.sf_status, s.STATUS_DESCRIPTION
     INTO v_sf_status, v_sf_desc 
     FROM flex_status s;
